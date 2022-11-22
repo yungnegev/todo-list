@@ -69,6 +69,12 @@ body {
 .btn-block {
   display: block;
   width: 100%;
+  height: 2rem;
+  background: #E66D5B;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  color: #D3D3D3;
 }
 
 .task {
@@ -76,6 +82,7 @@ body {
   margin: 15px;
   padding: 10px 20px;
   cursor: pointer;
+  user-select: none;
 }
 .task p{
   color: #D3D3D3;

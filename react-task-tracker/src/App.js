@@ -1,6 +1,8 @@
+import { useState } from "react"
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
-import { useState } from "react"
+import AddTask from "./components/AddTask";
+
 
 const App = () => {
 
@@ -39,6 +41,15 @@ const App = () => {
       the function dele te tasks uses that function to filter and the filter action
       is automatically displayed im gussing usState takes care of that */
     }
+    // --------- Add Task ------------
+    const addTask = (task) => {
+      // generating a random ID (could have done it with uiidv4)
+      let id = Math.floor(Math.random() * 10000) + 1
+      const newTask = {id, ...task}
+      setTasks([...tasks, newTask])
+    }
+    // ------------ Show Add Task -------------
+    const [showAddTask, setShowAddTask]= useState(false)
 
     // ---------- toggle reminder ------------
     const toggleReminder = (id)=>{
@@ -51,7 +62,8 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header />
+      <Header onAdd={()=> setShowAddTask(!showAddTask)}/>
+      {showAddTask && <AddTask onAdd={addTask}/>} {/* if show add task is true then append that shit, a short ternary operator with the && there */}
       <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
     </div>
   );
